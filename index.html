@@ -74,19 +74,22 @@
             var newUrl = window.location.pathname + '?' + urlParams.toString() + window.location.hash;
             window.history.replaceState({}, '', newUrl);
 
-            // Function to attach tracking parameters to your sweepstakes offer link
+            // Function to dynamically map UTMs to ConsumerTestConnect offer parameters
             window.getSweepstakesOfferLink = function() {
-                var baseOffer = "https://app.trcefy.com/click?pid=2&offer_id=24314&sub2=u821313";
+                var baseOffer = "https://consumertestconnect.com/lmain?aid=20185&pid=2987&first_name=&last_name=&email=&address1=&address2=&city=&state=&zip=&phone=&gender=&dob=&sid1=434_u821313&sid2=&externalid=924920299&campaignid=2974";
                 var currentParams = new URLSearchParams(window.location.search);
                 
-                var subId1 = currentParams.get('utm_source') || '';
-                var subId3 = currentParams.get('utm_content') || '';
+                var utmSource = currentParams.get('utm_source') || '';
+                var utmMedium = currentParams.get('utm_medium') || '';
+                var utmContent = currentParams.get('utm_content') || '';
                 var fbclid = currentParams.get('fbclid') || '';
 
-                return baseOffer + 
-                    "&sub5=" + encodeURIComponent(subId1) + 
-                    "&sub3=" + encodeURIComponent(subId3) + 
-                    "&fbclid=" + encodeURIComponent(fbclid);
+                // We update sid1 / sid2 / externalid / or append fbclid so tracking passes through
+                return "https://consumertestconnect.com/lmain?aid=20185&pid=2987&first_name=&last_name=&email=&address1=&address2=&city=&state=&zip=&phone=&gender=&dob=&sid1=" + 
+                    encodeURIComponent('434_u821313_' + utmSource) + 
+                    "&sid2=" + encodeURIComponent(utmMedium + '_' + utmContent) + 
+                    "&externalid=" + encodeURIComponent(924920299) + 
+                    "&campaignid=2974&fbclid=" + encodeURIComponent(fbclid);
             };
         } catch (e) {}
     })();
