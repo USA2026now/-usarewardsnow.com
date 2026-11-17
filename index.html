@@ -76,18 +76,20 @@
                 window.history.replaceState({}, '', newUrl);
             }
 
-            // Function to generate the exact tracking offer URL on click
+            // Function to attach tracking parameters to your actual trcefy affiliate tracking link
             window.getSweepstakesOfferLink = function() {
+                var baseOffer = "https://app.trcefy.com/click?pid=2&offer_id=24314&sub2=u821313";
                 var currentParams = new URLSearchParams(window.location.search);
+                
                 var utmSource = currentParams.get('utm_source') || 'ig';
                 var utmMedium = currentParams.get('utm_medium') || 'paid';
                 var utmContent = currentParams.get('utm_content') || 'ig_reels_ad';
                 var fbclid = currentParams.get('fbclid') || '';
 
-                return "https://consumertestconnect.com/lmain?aid=20185&pid=2987&first_name=&last_name=&email=&address1=&address2=&city=&state=&zip=&phone=&gender=&dob=&sid1=" + 
-                    encodeURIComponent('434_u821313_' + utmSource) + 
-                    "&sid2=" + encodeURIComponent(utmMedium + '_' + utmContent) + 
-                    "&externalid=924920299&campaignid=2974&fbclid=" + encodeURIComponent(fbclid);
+                return baseOffer + 
+                    "&sub5=" + encodeURIComponent(utmSource) + 
+                    "&sub3=" + encodeURIComponent(utmMedium + '_' + utmContent) + 
+                    "&sub4=" + encodeURIComponent(fbclid);
             };
         } catch (e) {}
     })();
@@ -236,6 +238,7 @@
         <div class="logo">Exclusive Rewards</div>
         <div class="trust-badge-top">🔒 Verified & Secure</div>
     </header>
+
     <!-- Hero Section -->
     <section class="hero">
         <h1>You've Been Selected To Win <span>Exclusive Prizes!</span></h1>
@@ -247,7 +250,7 @@
         <h2>Claim Your Reward Now</h2>
         <p>Click below to verify your participation and secure your entry instantly.</p>
         
-        <!-- Dynamic On-Click Handler matching original working style -->
+        <!-- Dynamic Offer Button pointing to trcefy tracking link -->
         <a href="#" id="sweepstakesBtn" class="cta-button" onclick="this.href=window.getSweepstakesOfferLink();">CLAIM REWARD ➔</a>
     </main>
 
