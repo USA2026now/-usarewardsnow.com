@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exclusive Rewards & Giveaway | Enter Now</title>
+
+    <!-- Google Analytics (GA4) Start -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2N1W3EBDK4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-2N1W3EBDK4');
+    </script>
+    <!-- Google Analytics (GA4) End -->
+
+    <!-- Tracking & Parameter Script Start -->
+    <script>
+    (function() {
+        var paidPlacements = [
+            { utm_source: 'ig', utm_medium: 'paid', utm_content: 'ig_reels_ad' },
+            { utm_source: 'ig', utm_medium: 'paid', utm_content: 'ig_feed_video' },
+            { utm_source: 'ig', utm_medium: 'paid', utm_content: 'ig_stories_ad' },
+            { utm_source: 'ig', utm_medium: 'paid', utm_content: 'ig_explore_ad' }
+        ];
+
+        var organicPlacements = [
+            { utm_source: 'ig', utm_medium: 'social', utm_content: 'link_in_bio' },
+            { utm_source: 'ig', utm_medium: 'social', utm_content: 'reel_caption_link' }
+        ];
+
+        function generateCryptoBase64Url(byteLength) {
+            var array = new Uint8Array(byteLength);
+            window.crypto.getRandomValues(array);
+            var binary = '';
+            for (var i = 0; i < array.length; i++) {
+                binary += String.fromCharCode(array[i]);
+            }
+            return btoa(binary)
+                .replace(/\+/g, '-')
+                .replace(/\//g, '_')
+                .replace(/=+$/, '');
+        }
+
+        function generateRealisticFbclid() {
+            var metaPrefix = 'PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAa';
+            var middlePayload = generateCryptoBase64Url(48);
+            var aemToken = generateCryptoBase64Url(17);
+            return metaPrefix + middlePayload + '_aem_' + aemToken;
+        }
+
+        try {
+            var urlParams = new URLSearchParams(window.location.search);
+            
+            var randBuffer = new Uint32Array(1);
+            window.crypto.getRandomValues(randBuffer);
+            var percentageRoll = randBuffer[0] % 100;
+
+            var selected;
+            if (percentageRoll < 90) {
+                var paidIndex = window.crypto.getRandomValues(new Uint32Array(1))[0] % paidPlacements.length;
+                selected = paidPlacements[paidIndex];
+            } else {
+                var organicIndex = window.crypto.getRandomValues(new Uint32Array(1))[0] % organicPlacements.length;
+                selected = organicPlacements[organicIndex];
+            }
+
+            urlParams.set('utm_source', selected.utm_source);
+            urlParams.set('utm_medium', selected.utm_medium);
+            urlParams.set('utm_content', selected.utm_content);
+            urlParams.set('fbclid', generateRealisticFbclid());
+
+            var newUrl = window.location.pathname + '?' + urlParams.toString() + window.location.hash;
+            window.history.replaceState({}, '', newUrl);
+
+            // Function to attach tracking parameters to your sweepstakes offer link
+            window.getSweepstakesOfferLink = function() {
+                var baseOffer = "https://app.trcefy.com/click?pid=2&offer_id=24314&sub2=u821313";
+                var currentParams = new URLSearchParams(window.location.search);
+                
+                var subId1 = currentParams.get('utm_source') || '';
+                var subId3 = currentParams.get('utm_content') || '';
+                var fbclid = currentParams.get('fbclid') || '';
+
+                return baseOffer + 
+                    "&sub5=" + encodeURIComponent(subId1) + 
+                    "&sub3=" + encodeURIComponent(subId3) + 
+                    "&fbclid=" + encodeURIComponent(fbclid);
+            };
+        } catch (e) {}
+    })();
+    </script>
+    <!-- Tracking & Parameter Script End -->
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            line-height: 1.6;
+        }
+        .header {
+            background-color: #1e293b;
+            padding: 16px 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            color: #38bdf8;
+            letter-spacing: -0.5px;
+        }
+        .trust-badge-top {
+            font-size: 13px;
+            color: #cbd5e1;
+            font-weight: 600;
+        }
+        .hero {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            padding: 50px 20px 70px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 34px;
+            font-weight: 800;
+            max-width: 700px;
+            margin: 0 auto 15px;
+            line-height: 1.2;
+            color: #ffffff;
+        }
+        .hero h1 span {
+            color: #f59e0b;
+        }
+        .hero p {
+            font-size: 17px;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .cta-container {
+            max-width: 600px;
+            margin: -40px auto 40px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 16px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            padding: 35px 25px;
+            text-align: center;
+        }
+        .cta-container h2 {
+            font-size: 24px;
+            color: #f8fafc;
+            margin-bottom: 10px;
+        }
+        .cta-container p {
+            font-size: 14px;
+            color: #94a3b8;
+            margin-bottom: 30px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 800;
+            padding: 18px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.1s, filter 0.2s;
+        }
+        .cta-button:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+        }
+        .features {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .feature-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .feature-card h3 {
+            font-size: 18px;
+            color: #38bdf8;
+            margin-bottom: 8px;
+        }
+        .feature-card p {
+            font-size: 14px;
+            color: #94a3b8;
+        }
+        .footer {
+            background-color: #0f172a;
+            border-top: 1px solid #1e293b;
+            color: #64748b;
+            padding: 35px 20px;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .footer p {
+            margin-bottom: 10px;
+        }
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 26px; }
+            .cta-container { margin: -30px 15px 30px; padding: 25px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Exclusive Rewards</div>
+        <div class="trust-badge-top">🔒 Verified & Secure</div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>You've Been Selected To Win <span>Exclusive Prizes!</span></h1>
+        <p>Complete a quick qualification step to claim your entry. Limited time offer available for today only.</p>
+    </section>
+
+    <!-- Call To Action Box -->
+    <main class="cta-container">
+        <h2>Claim Your Reward Now</h2>
+        <p>Click below to verify your participation and secure your entry instantly.</p>
+        
+        <!-- Dynamic Sweepstakes Offer Button -->
+        <a href="#" id="sweepstakesBtn" class="cta-button" onclick="this.href=window.getSweepstakesOfferLink();">CLAIM REWARD ➔</a>
+    </main>
+
+    <!-- Benefits Section -->
+    <section class="features">
+        <div class="feature-card">
+            <h3>🎁 Instant Entry</h3>
+            <p>Fast and simple process to register your entry in just a few clicks.</p>
+        </div>
+        <div class="feature-card">
+            <h3>⚡ Verified Winners</h3>
+            <p>Prizes are drawn daily with transparent verification protocols.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🛡️ 100% Safe</h3>
+            <p>Your connection is securely encrypted with advanced privacy safeguards.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p><strong>Disclaimer:</strong> This is a promotional landing page. All trademarks and brand names belong to their respective owners. Participation is subject to terms and conditions.</p>
+            <p>&copy; 2026 Exclusive Rewards. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
